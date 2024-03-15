@@ -15,6 +15,24 @@ steps:
     forceRepoUpdate: true
 
 - task: Xcode@5
+  displayName: 'Running XCTest/XCUITest'
+  inputs:
+    actions: 'test'
+    scheme: 'sampleapp-ios-swift'
+    sdk: 'iphonesimulator'
+    configuration: 'Release'
+    xcodeVersion: 'default' # Options: 8, 9, default, specifyPath
+    packageApp: false
+    xcWorkspacePath: '*.xcworkspace'
+    destinationSimulators: 'iPhone 14'
+    destinationTypeOption: 'simulators'
+    destinationPlatformOption: 'iOS'
+    signingOption: "auto"
+    useXcpretty: true
+    publishJUnitResults: 'build/reports/junit.xml'
+
+- task: Xcode@5
+  displayName: 'Running XCode build'
   inputs:
     actions: 'clean build'
     configuration: 'Release'
@@ -23,3 +41,4 @@ steps:
     scheme: 'sampleapp-ios-swift'
     packageApp: false
     publishJUnitResults: true
+    ask: Xcode@5
