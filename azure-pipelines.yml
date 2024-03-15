@@ -29,16 +29,17 @@ steps:
     destinationPlatformOption: 'iOS'
     signingOption: "auto"
     useXcpretty: true
-    publishJUnitResults: 'build/reports/junit.xml'
-
-- task: Xcode@5
-  displayName: 'Running XCode build'
-  inputs:
-    actions: 'clean build'
-    configuration: 'Release'
-    sdk: 'iphoneos'
-    xcWorkspacePath: '*.xcworkspace'
-    scheme: 'sampleapp-ios-swift'
-    packageApp: false
     publishJUnitResults: true
-    ask: Xcode@5
+
+
+#- task: Xcode@5
+#  displayName: 'Running XCode build'
+#  inputs:
+#    actions: 'clean build'
+#    configuration: 'Release'
+#    sdk: 'iphoneos'
+#    xcWorkspacePath: '*.xcworkspace'
+#    scheme: 'sampleapp-ios-swift'
+#    packageApp: false
+#    publishJUnitResults: true
+#    ask: Xcode@5
